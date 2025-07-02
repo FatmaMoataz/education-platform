@@ -25,7 +25,7 @@ export const logIn = createAsyncThunk(
       const res = await eduAPI.post("auth/login", userData);
       console.log("from slice res is");
       console.log(res);
-      return res.data;
+      return res;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -40,7 +40,7 @@ export const verify = createAsyncThunk(
       const res = await eduAPI.post(`auth/verify/${token}`, userData);
       console.log("from slice res is");
       console.log(res);
-      return res.data;
+      return res;
     } catch (error) {
       return rejectWithValue(error);
     }

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { signUp } from "../../state/act/actAuth";
+import { logIn, signUp } from "../../state/act/actAuth";
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -8,13 +8,9 @@ export default function Navbar() {
     <button
       onClick={() =>
         dispatch(
-          signUp({
-            fullName: "mo ashraf ",
-            email: "mahmoudaliefullstack@essgmail.com",
-            password: "My987654321@",
-            cpassword: "My987654321@",
-            phoneNumber: "01165891463",
-            classLevel: "Grade 1 Secondary",
+          logIn({
+            email: "S_admin@gmail.com",
+            password: "Sadmin123@",
           })
         )
       }

@@ -5,9 +5,28 @@ function UseInitialStates() {
     loadingAuth: false,
     authMessage: "",
     error: "",
-    token: localStorage.getItem("token"),
+    token: localStorage.getItem("token") || "",
   };
-  return { initialStateAuth };
+
+  const initialStateLesson = {
+    loadingAddLessson: false,
+    loadingGetLessonsAdmin: false,
+    loadingUpdateLesson: false,
+    loadingGetPurchased: false,
+    loadingGetLessons: false,
+    loadingGetLesson: false,
+    loadingDeleteLesson: false,
+    loadingpayLesson: false,
+    lessonMessage: "",
+    paymentUrl: "",
+    allLessons: [],
+    lessons: [],
+
+    purchasedLessons: [],
+    specificLesson: {},
+  };
+
+  return { initialStateAuth, initialStateLesson };
 }
 
 export default UseInitialStates;
