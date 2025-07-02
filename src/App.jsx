@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import { store } from "./state/store";
 
 function App() {
+
   return (
     <>
       <motion.div animate={{ x: 50 }} class="text-3xl font-bold underline">
