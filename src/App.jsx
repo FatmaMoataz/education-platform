@@ -26,7 +26,11 @@ function AppWrapper() {
         <Route
           path="/"
           element={
-            token ? <Navigate to="/home" replace /> : <Navigate to="/signup" replace />
+            token ? (
+              <Navigate to="/home" replace />
+            ) : (
+              <Navigate to="/signup" replace />
+            )
           }
         />
         <Route path="/signup" element={<Register />} />

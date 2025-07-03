@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { signUp, logIn, verify } from "../act/actAuth";
+import {
+  signUp,
+  logIn,
+  verify,
+  forgotPassword,
+  resetPassword,
+} from "../act/actAuth";
 import UseInitialStates from "../../hooks/use-initial-state";
 const { initialStateAuth } = UseInitialStates();
 
@@ -56,6 +62,32 @@ export const authSlice = createSlice({
         state.authMessage = action.payload.message;
       })
       .addCase(verify.rejected, (state, action) => {
+        state.error = action.payload.response.data.message;
+        state.loadingAuth = false;
+      })
+      .addCase(forgotPassword.pending, (state, action) => {
+        state.loadingAuth = true;
+        state.error = "";
+      })
+      .addCase(forgotPassword.fulfilled, (state, action) => {
+        state.loadingAuth = false;
+        state.error = "";
+        state.authMessage = action.payload.message;
+      })
+      .addCase(forgotPassword.rejected, (state, action) => {
+        state.error = action.payload.response.data.message;
+        state.loadingAuth = false;
+      })
+      .addCase(resetPassword.pending, (state, action) => {
+        state.loadingAuth = true;
+        state.error = "";
+      })
+      .addCase(resetPassword.fulfilled, (state, action) => {
+        state.loadingAuth = false;
+        state.error = "";
+        state.authMessage = action.payload.message;
+      })
+      .addCase(resetPassword.rejected, (state, action) => {
         state.error = action.payload.response.data.message;
         state.loadingAuth = false;
       });

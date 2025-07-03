@@ -46,3 +46,33 @@ export const verify = createAsyncThunk(
     }
   }
 );
+export const forgotPassword = createAsyncThunk(
+  "authSlice/forgotPassword",
+  async ({ email }, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+
+    try {
+      const res = await eduAPI.post(`user/forgot-password`, { email });
+      console.log("from slice res is");
+      console.log(res);
+      return res;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+export const resetPassword = createAsyncThunk(
+  "authSlice/resetPassword",
+  async (data, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+
+    try {
+      const res = await eduAPI.post(`user/forgot-password`, data);
+      console.log("from slice res is");
+      console.log(res);
+      return res;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
