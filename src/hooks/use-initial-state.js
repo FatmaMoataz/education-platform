@@ -21,12 +21,25 @@ function UseInitialStates() {
     paymentUrl: "",
     allLessons: [],
     lessons: [],
+    lessonsError: "",
 
     purchasedLessons: [],
     specificLesson: {},
   };
 
-  return { initialStateAuth, initialStateLesson };
+  const initialStateQuestion = {
+    loadingAddQuestion: false,
+    loadingEditQuestion: false,
+    loadingDeleteQuestion: false,
+    loadingGetQuestions: false,
+    loadingGetQuestion: false,
+
+    allQuestions: [],
+    questionError: "",
+    specificQuestion: {},
+  };
+
+  return { initialStateAuth, initialStateLesson, initialStateQuestion };
 }
 
 export default UseInitialStates;
