@@ -75,7 +75,15 @@ function Login() {
               >
                 Log in
               </button>
-              <h3 className="text-center">Forgot password?</h3>
+           <h3 className="text-center">
+  <span
+    onClick={() => navigate('/forgot-password')}
+    className="text-blue-600 cursor-pointer"
+  >
+    Forgot password?
+  </span>
+</h3>
+
               <h3 className="text-center">
                 Don't have an account?{" "}
                 <span
