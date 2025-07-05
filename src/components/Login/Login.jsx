@@ -22,12 +22,12 @@ const LoginSchema = Yup.object().shape({
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loadingAuth, authMessage, error } = useSelector(
+  const { loadingAuth, authMessage, error, token } = useSelector(
     (state) => state.auth
   );
 
   useEffect(() => {
-    if (authMessage?.toLowerCase().includes("success")) {
+    if (token) {
       setTimeout(() => {
         navigate("/home");
       }, 1500);
@@ -59,7 +59,9 @@ function Login() {
           }}
           validationSchema={LoginSchema}
           onSubmit={(values) => {
-            dispatch(logIn(values));
+            dispatch(logIn(values))
+              .unwrap()
+              .then(() => navigate("/home"));
           }}
         >
           {() => (
