@@ -6,6 +6,7 @@ import { useFavorites } from '../context/FavoriteContext';
 import RatingStars from '../components/RatingStars/RatingStars';
 import LoadingSpinner from '../components/LoadingSpinner/LoadingSpinner';
 
+
 import { 
   Star, 
   Users, 
@@ -17,6 +18,7 @@ import {
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
+import { Helmet } from 'react-helmet';
 
 const CourseDetails = () => {
   const { id } = useParams();
@@ -78,6 +80,10 @@ const CourseDetails = () => {
     >
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <Helmet>
+          <title>{course.title} - LearnHub</title>
+          <meta name="description" content={course.description} />
+        </Helmet>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>

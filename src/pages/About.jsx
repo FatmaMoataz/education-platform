@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import {Helmet} from 'react-helmet';
+
 import { BookOpen, Users, Award, Target, Heart, Lightbulb, Globe, CheckCircle } from 'lucide-react';
 
 const About = () => {
@@ -96,6 +98,9 @@ const About = () => {
     >
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      <Helmet>
+        <title>About Us - LearnHub</title>
+      </Helmet>
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">

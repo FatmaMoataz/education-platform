@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, BookOpen, Users, Award, TrendingUp, Star } from 'lucide-react';
 import CourseCard from '../components/CourseCard/CourseCard';
 import { mockCourses, mockTestimonials } from '../data/testData';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
   const featuredCourses = mockCourses.slice(0, 3);
@@ -16,6 +17,10 @@ const Home = () => {
     >
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      <Helmet>
+        <title>Home - LearnHub</title>
+        <meta name="description" content="Discover a variety of courses to enhance your skills and advance your career." />
+      </Helmet>
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">

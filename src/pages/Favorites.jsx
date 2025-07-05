@@ -3,6 +3,7 @@ import { Heart, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useFavorites } from '../context/FavoriteContext';
 import CourseCard from '../components/CourseCard/CourseCard';
+import { Helmet } from 'react-helmet';
 
 const Favorites = () => {
   const { favorites } = useFavorites();
@@ -16,6 +17,9 @@ const Favorites = () => {
     >
       {/* Header */}
       <div className="bg-white shadow-sm">
+        <Helmet>
+          <title>My Favorites - LearnHub</title>
+        </Helmet>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center space-x-3">
             <Heart className="h-8 w-8 text-red-500 fill-current" />

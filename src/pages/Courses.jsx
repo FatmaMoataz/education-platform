@@ -7,6 +7,7 @@ import FilterSidebar from '../components/FilterSidebar/FilterSidebar';
 import LoadingSpinner from '../components/LoadingSpinner/LoadingSpinner';
 import { mockCourses, mockCategories } from '../data/testData';
 
+
 const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [filteredCourses, setFilteredCourses] = useState([]);
@@ -97,6 +98,10 @@ const Courses = () => {
     >
       {/* Header */}
       <div className="bg-white shadow-sm">
+        <Helmet>
+          <title>All Courses - LearnHub</title>
+          <meta name="description" content="Explore a wide range of courses to enhance your skills and knowledge. Find courses in various categories including web development, data science, design, and more." />
+        </Helmet>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
             <div className="mb-4 md:mb-0">

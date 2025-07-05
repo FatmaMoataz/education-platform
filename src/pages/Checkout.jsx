@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { CreditCard, Lock, Check, Clock, Users, Star } from 'lucide-react';
 import { mockCourses } from '../data/testData';
 import LoadingSpinner from '../components/LoadingSpinner/LoadingSpinner';
+import { Helmet } from 'react-helmet';
 
 const Checkout = () => {
   const { courseId } = useParams();
@@ -61,6 +62,7 @@ const Checkout = () => {
         className="min-h-screen bg-gray-50 flex items-center justify-center"
       >
         <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full mx-4 text-center">
+       
           <div className="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Check className="h-8 w-8 text-success-600" />
           </div>

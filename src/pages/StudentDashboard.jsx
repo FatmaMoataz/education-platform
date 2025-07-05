@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { BookOpen, TrendingUp, Award, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { mockCourses, mockUser } from '../data/mockData';
+import { Helmet } from 'react-helmet';
 
 const Dashboard = () => {
   const user = mockUser;
@@ -29,6 +30,10 @@ const Dashboard = () => {
     >
       {/* Header */}
       <div className="bg-white shadow-sm">
+        <Helmet>
+          <title>Dashboard - LearnHub</title>
+          <meta name="description" content="Track your exam performance and manage your courses." />
+        </Helmet>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center space-x-4">
             <img

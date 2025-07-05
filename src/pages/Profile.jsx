@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { User, Mail, Lock, Save, Edit, Camera } from 'lucide-react';
 import { mockUser } from '../data/mockData';
 import { useAuth } from '../context/AuthContext';
+import { Helmet } from 'react-helmet';
 
 const Profile = () => {
   const { user, logout } = useAuth();
@@ -41,6 +42,10 @@ const Profile = () => {
       className="min-h-screen bg-gray-100 py-10"
     >
       <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 px-4">
+        <Helmet>
+          <title>Profile - LearnHub</title>
+          <meta name="description" content="View and edit your profile information on LearnHub." />
+        </Helmet>
         {/* Sidebar Card */}
         <div className="bg-white shadow-md rounded-xl p-6 text-center">
           <div className="relative w-28 h-28 mx-auto mb-4">
