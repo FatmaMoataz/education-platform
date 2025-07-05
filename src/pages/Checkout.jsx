@@ -90,6 +90,10 @@ const Checkout = () => {
   }
 
   return (
+    <>
+      <Helmet>
+        <title>Checkout - LearnHub</title>
+      </Helmet>
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -277,6 +281,7 @@ const Checkout = () => {
         </div>
       </div>
     </motion.div>
+    </>
   );
 };
 

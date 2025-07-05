@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar/SearchBar';
 import FilterSidebar from '../components/FilterSidebar/FilterSidebar';
 import LoadingSpinner from '../components/LoadingSpinner/LoadingSpinner';
 import { mockCourses, mockCategories } from '../data/testData';
+import { Helmet } from 'react-helmet';
 
 
 const Courses = () => {
