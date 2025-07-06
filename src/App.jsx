@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { store } from "./state/store";
 
 // Layout + Auth Pages
@@ -19,20 +19,20 @@ import { FavoritesProvider } from "./context/FavoriteContext";
 import CourseDetails from "./pages/CourseDetails";
 import Checkout from "./pages/Checkout";
 import TeacherDashboard from "./pages/TeacherDashboard";
-import StudentDashboard from './pages/StudentDashboard'
+import StudentDashboard from "./pages/StudentDashboard";
 
 function AppWrapper() {
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  // const [token, setToken] = useState(localStorage.getItem("token"));
 
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setToken(localStorage.getItem("token"));
-    };
+  // useEffect(() => {
+  //   const handleStorageChange = () => {
+  //     setToken(localStorage.getItem("token"));
+  //   };
 
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, []);
-
+  //   window.addEventListener("storage", handleStorageChange);
+  //   return () => window.removeEventListener("storage", handleStorageChange);
+  // }, []);
+  const { token } = useSelector((state) => state.auth);
   return (
     <BrowserRouter>
       <Routes>

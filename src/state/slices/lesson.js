@@ -61,7 +61,7 @@ export const lessonSlice = createSlice({
       .addCase(getLessons.fulfilled, (state, action) => {
         state.loadingGetLessons = false;
         console.log(action.payload);
-        state.lessons = action.payload.data.data;
+        state.lessons = action.payload.data;
       })
       .addCase(getLessons.rejected, (state, action) => {
         state.loadingGetLessons = false;
@@ -73,7 +73,7 @@ export const lessonSlice = createSlice({
       .addCase(getLesson.fulfilled, (state, action) => {
         state.loadingGetLesson = false;
         console.log(action.payload);
-        state.specificLesson = action.payload.data.data;
+        state.specificLesson = action.payload.data;
       })
       .addCase(getLesson.rejected, (state, action) => {
         state.loadingGetLesson = false;

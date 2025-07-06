@@ -25,7 +25,7 @@ function createAxiosInstance(baseURL, contentType, includeAuthHeader = false) {
   const responseInterceptor = (response) => {
     console.log("response");
     console.log(response);
-    return response;
+    return response.data;
   };
 
   // Error handler for request interceptor
