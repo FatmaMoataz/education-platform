@@ -30,7 +30,7 @@ export const lessonSlice = createSlice({
       })
       .addCase(addLesson.rejected, (state, action) => {
         state.loadingAddLessson = false;
-        state.lessonsError = action.payload.response.data.message;
+        state.lessonsError = action.payload?.response?.data?.message;
       })
       .addCase(updateLesson.pending, (state, action) => {
         state.loadingUpdateLesson = true;
@@ -41,7 +41,7 @@ export const lessonSlice = createSlice({
       })
       .addCase(updateLesson.rejected, (state, action) => {
         state.loadingUpdateLesson = false;
-        state.lessonsError = action.payload.response.data.message;
+        state.lessonsError = action.payload?.response?.data?.message;
       })
       .addCase(getLessonsAdmin.pending, (state, action) => {
         state.loadingGetLessonsAdmin = true;
@@ -53,7 +53,7 @@ export const lessonSlice = createSlice({
       })
       .addCase(getLessonsAdmin.rejected, (state, action) => {
         state.loadingGetLessonsAdmin = false;
-        state.lessonsError = action.payload.response.data.message;
+        state.lessonsError = action.payload?.response?.data?.message;
       })
       .addCase(getLessons.pending, (state, action) => {
         state.loadingGetLessons = true;
@@ -65,7 +65,7 @@ export const lessonSlice = createSlice({
       })
       .addCase(getLessons.rejected, (state, action) => {
         state.loadingGetLessons = false;
-        state.lessonsError = action.payload.response.data.message;
+        state.lessonsError = action.payload?.response?.data?.message;
       })
       .addCase(getLesson.pending, (state, action) => {
         state.loadingGetLesson = true;
@@ -77,7 +77,7 @@ export const lessonSlice = createSlice({
       })
       .addCase(getLesson.rejected, (state, action) => {
         state.loadingGetLesson = false;
-        state.lessonsError = action.payload.response.data.message;
+        state.lessonsError = action.payload?.response?.data?.message;
       })
       .addCase(getPurchasedLessons.pending, (state, action) => {
         state.loadingGetPurchased = true;
@@ -89,7 +89,7 @@ export const lessonSlice = createSlice({
       })
       .addCase(getPurchasedLessons.rejected, (state, action) => {
         state.loadingGetPurchased = false;
-        state.lessonsError = action.payload.response.data.message;
+        state.lessonsError = action.payload?.response?.data?.message;
       })
       .addCase(deleteLesson.pending, (state, action) => {
         state.loadingDeleteLesson = true;
@@ -100,7 +100,7 @@ export const lessonSlice = createSlice({
       })
       .addCase(deleteLesson.rejected, (state, action) => {
         state.loadingDeleteLesson = false;
-        state.lessonsError = action.payload.response.data.message;
+        state.lessonsError = action.payload?.response?.data?.message;
       })
       .addCase(payLesson.pending, (state, action) => {
         state.loadingpayLesson = true;
@@ -113,9 +113,10 @@ export const lessonSlice = createSlice({
       })
       .addCase(payLesson.rejected, (state, action) => {
         state.loadingpayLesson = false;
-        state.lessonsError = action.payload.response.data.message;
+        state.lessonsError = action.payload?.response?.data?.message;
       });
   },
 });
 
 export default lessonSlice.reducer;
+export { getLessons };

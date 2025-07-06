@@ -8,7 +8,6 @@
 // import { mockCourses, mockCategories } from '../data/testData';
 // import { Helmet } from 'react-helmet';
 
- 
 // const Courses = () => {
 //   const [courses, setCourses] = useState([]);
 //   const [filteredCourses, setFilteredCourses] = useState([]);
@@ -159,30 +158,31 @@
 // };
 
 // export default Courses;
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { motion } from 'framer-motion';
-import { Filter } from 'lucide-react';
-import { Helmet } from 'react-helmet';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { Filter } from "lucide-react";
+// import { Helmet } from "react-helmet";
 
-import CourseCard from '../components/CourseCard/CourseCard';
-import SearchBar from '../components/SearchBar/SearchBar';
-import FilterSidebar from '../components/FilterSidebar/FilterSidebar';
-import LoadingSpinner from '../components/LoadingSpinner/LoadingSpinner';
-
-import { getLessons } from '../state/act/actLessons';
+import CourseCard from "../components/CourseCard/CourseCard";
+import SearchBar from "../components/SearchBar/SearchBar";
+import FilterSidebar from "../components/FilterSidebar/FilterSidebar";
+import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
+import { getLessons } from "../state/act/actLessons";
 
 const Courses = () => {
   const dispatch = useDispatch();
-
   // Redux state
-const { lessons, loadingGetLessons, lessonsError } = useSelector(state => state.lessons);
+  const { lessons, loadingGetLessons, lessonsError } = useSelector(
+    (state) => state.lessons
+  );
+  console.log("lessons", lessons);
 
   // UI states
   const [filteredCourses, setFilteredCourses] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [priceRange, setPriceRange] = useState('all');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [priceRange, setPriceRange] = useState("all");
   const [rating, setRating] = useState(0);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
@@ -202,38 +202,43 @@ const { lessons, loadingGetLessons, lessonsError } = useSelector(state => state.
     let filtered = [...lessons];
 
     if (searchQuery) {
-      filtered = filtered.filter(course =>
-        course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        course.description.toLowerCase().includes(searchQuery.toLowerCase())
+      filtered = filtered.filter(
+        (course) =>
+          course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          course.description.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
-    if (selectedCategory !== 'All') {
-      filtered = filtered.filter(course => course.category === selectedCategory);
+    if (selectedCategory !== "All") {
+      filtered = filtered.filter(
+        (course) => course.category === selectedCategory
+      );
     }
 
-    if (priceRange !== 'all') {
+    if (priceRange !== "all") {
       switch (priceRange) {
-        case 'free':
-          filtered = filtered.filter(course => course.price === 0);
+        case "free":
+          filtered = filtered.filter((course) => course.price === 0);
           break;
-        case 'paid':
-          filtered = filtered.filter(course => course.price > 0);
+        case "paid":
+          filtered = filtered.filter((course) => course.price > 0);
           break;
-        case 'under50':
-          filtered = filtered.filter(course => course.price < 50);
+        case "under50":
+          filtered = filtered.filter((course) => course.price < 50);
           break;
-        case '50to100':
-          filtered = filtered.filter(course => course.price >= 50 && course.price <= 100);
+        case "50to100":
+          filtered = filtered.filter(
+            (course) => course.price >= 50 && course.price <= 100
+          );
           break;
-        case 'over100':
-          filtered = filtered.filter(course => course.price > 100);
+        case "over100":
+          filtered = filtered.filter((course) => course.price > 100);
           break;
       }
     }
 
     if (rating > 0) {
-      filtered = filtered.filter(course => course.rating >= rating);
+      filtered = filtered.filter((course) => course.rating >= rating);
     }
 
     setFilteredCourses(filtered);
@@ -264,9 +269,9 @@ const { lessons, loadingGetLessons, lessonsError } = useSelector(state => state.
       exit={{ opacity: 0 }}
       className="min-h-screen bg-gray-50"
     >
-      <Helmet>
+      {/* <Helmet>
         <title>All Courses - LearnHub</title>
-      </Helmet>
+      </Helmet> */}
 
       {/* Header */}
       <div className="bg-white shadow-sm">
@@ -294,7 +299,11 @@ const { lessons, loadingGetLessons, lessonsError } = useSelector(state => state.
 
       {/* Filter Sidebar */}
       <FilterSidebar
-categories={lessons && lessons.length > 0 ? [...new Set(lessons.map(l => l.category))] : []}
+        categories={
+          lessons && lessons.length > 0
+            ? [...new Set(lessons.map((l) => l.category))]
+            : []
+        }
         selectedCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
         priceRange={priceRange}
@@ -309,12 +318,14 @@ categories={lessons && lessons.length > 0 ? [...new Set(lessons.map(l => l.categ
       <div className="max-w-7xl mx-auto px-4 py-8">
         {filteredCourses.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No courses found matching your criteria.</p>
+            <p className="text-gray-500 text-lg">
+              No courses found matching your criteria.
+            </p>
           </div>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {filteredCourses.map((course, index) => (
-              <Cours eCard key={course.id} course={course} index={index} />
+              <CourseCard key={course.id} course={course} index={index} />
             ))}
           </div>
         )}

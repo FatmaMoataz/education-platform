@@ -53,11 +53,7 @@ function AppWrapper() {
         <Route path="/reset-password" element={<ResetPassword />} />
 
         {/* Main pages with Layout (navbar + footer) */}
-        <Route
-          element={token ? <Layout /> : <Navigate to="/login" replace />}
-        >
-                 
-
+        <Route element={token ? <Layout /> : <Navigate to="/login" replace />}>
           <Route path="/home" element={<Home />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetails />} />
@@ -73,9 +69,9 @@ function AppWrapper() {
 function App() {
   return (
     <Provider store={store}>
-    <FavoritesProvider>
-      <AppWrapper />
-    </FavoritesProvider>
+      <FavoritesProvider>
+        <AppWrapper />
+      </FavoritesProvider>
     </Provider>
   );
 }
