@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Menu, X, BookOpen, Heart } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { div } from "framer-motion/client";
 import { handlelogOutState } from "../../state/slices/auth";
 
 const Navbar = () => {
@@ -16,6 +15,8 @@ const Navbar = () => {
     { path: "/courses", label: "Courses" },
     { path: "/favorites", label: "Favorites" },
     { path: "/about", label: "About" },
+    { path: "/dashboard/teacher", label: "Teacher" },
+    { path: "/dashboard/student", label: "Student" },
   ];
 
   return (
