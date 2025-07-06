@@ -51,7 +51,7 @@ const ResetPassword = () => {
         />
       </div>
 
-      <div className="bg-white p-8 w-full md:w-1/2">
+      <div className="bg-white p-8 w-full">
         <h2 className="text-3xl font-bold mb-4 text-center text-blue-600">
           Reset Password
         </h2>
