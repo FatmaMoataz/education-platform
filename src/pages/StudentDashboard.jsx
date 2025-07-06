@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { BookOpen, TrendingUp, Award, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { mockCourses, mockUser } from '../data/mockData';
+import { mockCourses, mockUser } from '../data/testData';
 import { Helmet } from 'react-helmet';
 
 const Dashboard = () => {

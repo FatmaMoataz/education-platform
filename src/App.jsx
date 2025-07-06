@@ -18,6 +18,8 @@ import Favorites from "./pages/Favorites";
 import { FavoritesProvider } from "./context/FavoriteContext";
 import CourseDetails from "./pages/CourseDetails";
 import Checkout from "./pages/Checkout";
+import TeacherDashboard from "./pages/TeacherDashboard";
+import StudentDashboard from './pages/StudentDashboard'
 
 function AppWrapper() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -64,6 +66,8 @@ function AppWrapper() {
           <Route path="/checkout/:courseId" element={<Checkout />} />
           <Route path="/about" element={<About />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/dashboard/teacher" element={<TeacherDashboard />} />
+          <Route path="/dashboard/student" element={<StudentDashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>
