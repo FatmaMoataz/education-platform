@@ -25,7 +25,7 @@ const CourseCard = ({ course, index = 0 }) => {
       transition={{ duration: 0.3, delay: index * 0.1 }}
       className="card card-hover group relative"
     >
-      <Link to={`/courses/${course._id}`}>
+      <Link to={`/courses/${course.id}`}>
         <div className="relative">
           <img
             src={course.image}

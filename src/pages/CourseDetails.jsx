@@ -95,24 +95,21 @@ const CourseDetails = () => {
   };
 
   const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     });
   };
 
   const getYouTubeVideoId = (url) => {
-    const regExp =
-      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     const match = url.match(regExp);
-    return match && match[2].length === 11 ? match[2] : null;
+    return (match && match[2].length === 11) ? match[2] : null;
   };
 
   const videoId = getYouTubeVideoId(specificLesson.video);
-  const thumbnailUrl = videoId
-    ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
-    : null;
+  const thumbnailUrl = videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
 
   return (
     <motion.div
@@ -135,7 +132,7 @@ const CourseDetails = () => {
                   {specificLesson.classLevel}
                 </span>
                 <span className="bg-white text-blue-600 px-3 py-1 rounded-full text-sm font-medium">
-                  {specificLesson.isPaid ? "Paid" : "Free"}
+                  {specificLesson.isPaid ? 'Paid' : 'Free'}
                 </span>
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -159,9 +156,7 @@ const CourseDetails = () => {
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-2">
                   <DollarSign className="h-6 w-6" />
-                  <span className="text-3xl font-bold">
-                    ${specificLesson.price}
-                  </span>
+                  <span className="text-3xl font-bold">${specificLesson.price}</span>
                 </div>
               </div>
             </div>
@@ -221,9 +216,7 @@ const CourseDetails = () => {
             <div className="flex items-center space-x-4 text-sm text-gray-600">
               <div className="flex items-center space-x-1">
                 <Calendar className="h-4 w-4" />
-                <span>
-                  Scheduled: {formatDate(specificLesson.scheduledDate)}
-                </span>
+                <span>Scheduled: {formatDate(specificLesson.scheduledDate)}</span>
               </div>
               <div className="flex items-center space-x-1">
                 <Award className="h-4 w-4" />
@@ -297,8 +290,7 @@ const CourseDetails = () => {
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   </div>
                   <span className="text-gray-700">
-                    Understand the fundamental concepts of ratios and
-                    proportions
+                    Understand the fundamental concepts of ratios and proportions
                   </span>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -306,8 +298,7 @@ const CourseDetails = () => {
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   </div>
                   <span className="text-gray-700">
-                    Learn how to apply ratios and proportions in real-world
-                    scenarios
+                    Learn how to apply ratios and proportions in real-world scenarios
                   </span>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -315,8 +306,7 @@ const CourseDetails = () => {
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                   </div>
                   <span className="text-gray-700">
-                    Master cross multiplication techniques for solving
-                    proportion problems
+                    Master cross multiplication techniques for solving proportion problems
                   </span>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -337,9 +327,7 @@ const CourseDetails = () => {
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">
-                    Class Level
-                  </h3>
+                  <h3 className="font-semibold text-gray-900 mb-2">Class Level</h3>
                   <p className="text-gray-600">{specificLesson.classLevel}</p>
                 </div>
                 <div>
@@ -347,20 +335,12 @@ const CourseDetails = () => {
                   <p className="text-gray-600">${specificLesson.price}</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">
-                    Scheduled Date
-                  </h3>
-                  <p className="text-gray-600">
-                    {formatDate(specificLesson.scheduledDate)}
-                  </p>
+                  <h3 className="font-semibold text-gray-900 mb-2">Scheduled Date</h3>
+                  <p className="text-gray-600">{formatDate(specificLesson.scheduledDate)}</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">
-                    Access Type
-                  </h3>
-                  <p className="text-gray-600">
-                    {specificLesson.isPaid ? "Paid Access" : "Free Access"}
-                  </p>
+                  <h3 className="font-semibold text-gray-900 mb-2">Access Type</h3>
+                  <p className="text-gray-600">{specificLesson.isPaid ? 'Paid Access' : 'Free Access'}</p>
                 </div>
               </div>
             </div>
@@ -380,21 +360,15 @@ const CourseDetails = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Calendar className="h-5 w-5 text-blue-600" />
-                  <span className="text-gray-700">
-                    Scheduled learning session
-                  </span>
+                  <span className="text-gray-700">Scheduled learning session</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Award className="h-5 w-5 text-blue-600" />
-                  <span className="text-gray-700">
-                    Certificate of completion
-                  </span>
+                  <span className="text-gray-700">Certificate of completion</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <GraduationCap className="h-5 w-5 text-blue-600" />
-                  <span className="text-gray-700">
-                    Grade-level appropriate content
-                  </span>
+                  <span className="text-gray-700">Grade-level appropriate content</span>
                 </div>
               </div>
             </div>

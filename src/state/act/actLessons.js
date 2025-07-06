@@ -103,11 +103,15 @@ export const payLesson = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
 
     try {
-      const res = await eduAPI.delete(`lesson/pay/${lessonId}`, {
-        headers: {
-          token: localStorage.getItem("token"), // or 'Authorization': `Bearer ${token}` if using Bearer format
-        },
-      });
+      const res = await eduAPI.post(
+        `lesson/pay/${lessonId}`,
+        {},
+        {
+          headers: {
+            token: localStorage.getItem("token"), // or 'Authorization': `Bearer ${token}` if using Bearer format
+          },
+        }
+      );
       console.log("from slice res is");
       console.log(res);
       return res;
