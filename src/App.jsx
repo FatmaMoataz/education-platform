@@ -20,6 +20,9 @@ import CourseDetails from "./pages/CourseDetails";
 import Checkout from "./pages/Checkout";
 import TeacherDashboard from "./pages/TeacherDashboard";
 import StudentDashboard from "./pages/StudentDashboard";
+import AddCourse from "./pages/AddCourse";
+import { ToastContainer } from "react-toastify";
+import EditCourse from "./pages/EditCourse";
 
 function AppWrapper() {
   // const [token, setToken] = useState(localStorage.getItem("token"));
@@ -59,6 +62,8 @@ function AppWrapper() {
           <Route path="/home" element={<Home />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetails />} />
+          <Route path="/courses/edit/:id" element={<EditCourse />} />
+          <Route path="/courses/add" element={<AddCourse />} />
           <Route path="/checkout/:courseId" element={<Checkout />} />
           <Route path="/about" element={<About />} />
           <Route path="/favorites" element={<Favorites />} />
@@ -74,6 +79,8 @@ function App() {
   return (
     <Provider store={store}>
       <FavoritesProvider>
+        <ToastContainer />
+
         <AppWrapper />
       </FavoritesProvider>
     </Provider>

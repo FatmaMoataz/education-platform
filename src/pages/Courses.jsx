@@ -9,6 +9,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import FilterSidebar from "../components/FilterSidebar/FilterSidebar";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 import { getLessons } from "../state/act/actLessons";
+import { Link } from "react-router-dom";
 
 const Courses = () => {
   const dispatch = useDispatch();
@@ -165,7 +166,7 @@ const Courses = () => {
           content="Explore a wide range of lessons to enhance your skills and knowledge. Find lessons across different grade levels and subjects."
         />
       </Helmet>
-
+      <Link to="/courses/add">Add Course</Link>
       {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

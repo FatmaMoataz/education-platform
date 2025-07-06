@@ -1,9 +1,10 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Star, Users, Clock, Heart } from "lucide-react";
+import { Star, Users, Clock, Heart, Edit } from "lucide-react";
 import { useFavorites } from "../../context/FavoriteContext";
 
-const CourseCard = ({ course, index = 0 }) => {
+const CourseCard = ({ course, index = 0, showEditButton = true }) => {
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
   const favorited = isFavorite(course.id);
 
@@ -16,6 +17,12 @@ const CourseCard = ({ course, index = 0 }) => {
     } else {
       addToFavorites(course);
     }
+  };
+
+  const handleEditClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Navigation will be handled by the Link component
   };
 
   return (
@@ -45,6 +52,14 @@ const CourseCard = ({ course, index = 0 }) => {
           >
             <Heart className={`h-4 w-4 ${favorited ? "fill-current" : ""}`} />
           </button>
+
+          {/* Edit Button - Only show if showEditButton is true */}
+          <Link
+            to={`/courses/edit/${course.id}`}
+            className="absolute bottom-2 right-2 p-2 bg-green-500 text-white rounded-full transition-colors duration-200 hover:bg-green-600 shadow-lg"
+          >
+            <Edit className="h-4 w-4" />
+          </Link>
         </div>
 
         <div className="p-6">
