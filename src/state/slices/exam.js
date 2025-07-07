@@ -65,7 +65,7 @@ export const examSlice = createSlice({
         state.loadingGetExam = false;
         console.log(action.payload);
         state.examError = "";
-        state.spe cificExam = action.payload.data;
+        state.specificExam = action.payload.data;
         state.examError = "";
       })
       .addCase(getSpecificExam.rejected, (state, action) => {
