@@ -4,6 +4,8 @@ import { store } from "./state/store";
 import { FavoritesProvider } from "./context/FavoriteContext";
 import { ToastContainer } from "react-toastify";
 import { Suspense, lazy } from "react";
+import AdminExamPanel from "./pages/Exam";
+import AdminQuestionPanel from "./pages/Question";
 
 const Layout = lazy(() => import("./components/Layout/Layout"));
 const Register = lazy(() => import("./components/Register/Register"));
@@ -69,6 +71,8 @@ function AppWrapper() {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/dashboard/teacher" element={<TeacherDashboard />} />
             <Route path="/dashboard/student" element={<StudentDashboard />} />
+            <Route path="/exams" element={<AdminExamPanel />} />
+            <Route path="/exams/:id" element={<AdminQuestionPanel />} />
           </Route>
         </Routes>
       </Suspense>
