@@ -1,4 +1,3 @@
-import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,12 +14,9 @@ import { addLesson } from "../state/act/actLessons";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-// Mock Redux action - replace with your actual import
-
 const AddCourse = () => {
   const dispatch = useDispatch();
 
-  // Mock Redux state - replace with your actual selector
   const { loadingAddLessson, lessonsError } = useSelector((state) => ({
     loadingAddLessson: false,
     lessonsError: null,
@@ -75,10 +71,8 @@ const AddCourse = () => {
           resetForm();
           toast("Course Added Successfully");
           navigate("/courses");
-          // You can add success notification here
         })
         .catch(() => {
-          // Error handling is done in Redux slice
         })
         .finally(() => {
           setSubmitting(false);
@@ -116,7 +110,6 @@ const AddCourse = () => {
           )}
 
           <div className="space-y-6">
-            {/* Title Field */}
             <div>
               <label
                 htmlFor="title"
@@ -143,8 +136,6 @@ const AddCourse = () => {
                 </p>
               )}
             </div>
-
-            {/* Description Field */}
             <div>
               <label
                 htmlFor="description"
@@ -171,8 +162,6 @@ const AddCourse = () => {
                 </p>
               )}
             </div>
-
-            {/* Video URL Field */}
             <div>
               <label
                 htmlFor="video"
@@ -199,8 +188,6 @@ const AddCourse = () => {
                 </p>
               )}
             </div>
-
-            {/* Class Level Field */}
             <div>
               <label
                 htmlFor="classLevel"
@@ -232,8 +219,6 @@ const AddCourse = () => {
                 </p>
               )}
             </div>
-
-            {/* Scheduled Date Field */}
             <div>
               <label
                 htmlFor="scheduledDate"
@@ -259,8 +244,6 @@ const AddCourse = () => {
                 </p>
               )}
             </div>
-
-            {/* Price Field */}
             <div>
               <label
                 htmlFor="price"
@@ -289,8 +272,6 @@ const AddCourse = () => {
                 </p>
               )}
             </div>
-
-            {/* Submit Button */}
             <div className="pt-6">
               <button
                 type="button"
