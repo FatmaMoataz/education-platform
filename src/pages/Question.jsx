@@ -17,12 +17,14 @@ const AdminQuestionPanel = () => {
 
   const fetchExam = async () => {
     try {
-      const res = await axios.get(`https://edu-master-delta.vercel.app/exam/get/${examId}`, {
-        headers: {
-          token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhcmFAZ21haWwuY29tIiwiX2lkIjoiNjg1ZDM5YjYwNDRiMDJlMzA2YThlMjA0IiwiaWF0IjoxNzUxODI4NzE2LCJleHAiOjE3NTE5MTUxMTZ9.B8niKpetjkzVP1IJnAOXybc4vc2j72Cl0_Y1lpsotwQ",
-        },
-      });
+      const res = await axios.get(
+        `https://edu-master-delta.vercel.app/exam/get/${examId}`,
+        {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        }
+      );
       setExam(res.data.data);
     } catch (err) {
       console.error("Failed to fetch exam details", err);
@@ -31,12 +33,14 @@ const AdminQuestionPanel = () => {
 
   const fetchQuestions = async () => {
     try {
-      const res = await axios.get("https://edu-master-delta.vercel.app/question", {
-        headers: {
-          token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhcmFAZ21haWwuY29tIiwiX2lkIjoiNjg1ZDM5YjYwNDRiMDJlMzA2YThlMjA0IiwiaWF0IjoxNzUxODI4NzE2LCJleHAiOjE3NTE5MTUxMTZ9.B8niKpetjkzVP1IJnAOXybc4vc2j72Cl0_Y1lpsotwQ",
-        },
-      });
+      const res = await axios.get(
+        "https://edu-master-delta.vercel.app/question",
+        {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        }
+      );
       setQuestions(res.data.data.filter((q) => q.exam === examId));
     } catch (err) {
       console.error("Failed to fetch questions", err);
@@ -64,12 +68,15 @@ const AdminQuestionPanel = () => {
     }
 
     try {
-      await axios.post("https://edu-master-delta.vercel.app/question", dataToSend, {
-        headers: {
-          token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhcmFAZ21haWwuY29tIiwiX2lkIjoiNjg1ZDM5YjYwNDRiMDJlMzA2YThlMjA0IiwiaWF0IjoxNzUxODI4NzE2LCJleHAiOjE3NTE5MTUxMTZ9.B8niKpetjkzVP1IJnAOXybc4vc2j72Cl0_Y1lpsotwQ",
-        },
-      });
+      await axios.post(
+        "https://edu-master-delta.vercel.app/question",
+        dataToSend,
+        {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        }
+      );
       setForm({
         text: "",
         type: "multiple-choice",
@@ -84,7 +91,11 @@ const AdminQuestionPanel = () => {
   };
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="min-h-screen bg-white px-8 py-10">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="min-h-screen bg-white px-8 py-10"
+    >
       <div className="max-w-5xl mx-auto">
         <h1 className="text-3xl font-bold text-center text-blue-700 mb-8">
           📚 Questions for Exam: {exam ? exam.title : "Loading..."}
@@ -136,7 +147,9 @@ const AdminQuestionPanel = () => {
               type="text"
               placeholder="Correct Answer"
               value={form.correctAnswer}
-              onChange={(e) => setForm({ ...form, correctAnswer: e.target.value })}
+              onChange={(e) =>
+                setForm({ ...form, correctAnswer: e.target.value })
+              }
               className="w-full border-b border-blue-400 p-2 bg-transparent focus:outline-none"
               required
             />
@@ -144,7 +157,9 @@ const AdminQuestionPanel = () => {
               type="number"
               placeholder="Points"
               value={form.points}
-              onChange={(e) => setForm({ ...form, points: Number(e.target.value) })}
+              onChange={(e) =>
+                setForm({ ...form, points: Number(e.target.value) })
+              }
               className="w-full border-b border-blue-400 p-2 bg-transparent focus:outline-none"
             />
             <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">
@@ -154,7 +169,9 @@ const AdminQuestionPanel = () => {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-blue-700 mb-4">📝 Existing Questions</h2>
+          <h2 className="text-2xl font-bold text-blue-700 mb-4">
+            📝 Existing Questions
+          </h2>
           {questions.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {questions.map((q) => (
@@ -165,7 +182,9 @@ const AdminQuestionPanel = () => {
                   transition={{ duration: 0.3 }}
                   className="p-4 bg-white border border-blue-100 rounded-xl shadow hover:shadow-md"
                 >
-                  <p className="text-lg text-blue-800 font-semibold mb-1">{q.text}</p>
+                  <p className="text-lg text-blue-800 font-semibold mb-1">
+                    {q.text}
+                  </p>
                   <p className="text-sm text-gray-600">
                     Points: {q.points} | Type: {q.type}
                   </p>
