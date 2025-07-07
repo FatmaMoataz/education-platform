@@ -111,6 +111,10 @@ export const lessonSlice = createSlice({
         state.loadingDeleteLesson = false;
         console.log(action.payload);
         state.lessonsError = "";
+        console.log("action.meta", action.meta.arg.lessonId);
+        state.lessons = state.lessons.filter(
+          (lesson) => lesson._id !== action.meta.arg.lessonId
+        );
       })
       .addCase(deleteLesson.rejected, (state, action) => {
         state.loadingDeleteLesson = false;

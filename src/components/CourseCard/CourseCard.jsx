@@ -1,13 +1,15 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Star, Users, Clock, Heart, Edit } from "lucide-react";
+import { Star, Users, Clock, Heart, Edit, Trash2 } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
 import { useFavorites } from "../../context/FavoriteContext";
+import { deleteLesson } from "../../state/act/actLessons";
 
 const CourseCard = ({ course, index = 0, showEditButton = true }) => {
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
+  const dispatch = useDispatch();
   const favorited = isFavorite(course.id);
-
+  const { loadingDeleteLesson } = useSelector((state) => state.lessons);
   const handleFavoriteClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -19,10 +21,13 @@ const CourseCard = ({ course, index = 0, showEditButton = true }) => {
     }
   };
 
-  const handleEditClick = (e) => {
+  const handleDeleteClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    // Navigation will be handled by the Link component
+
+    if (window.confirm(`Are you sure you want to delete "${course.title}"?`)) {
+      dispatch(deleteLesson({ lessonId: course.id }));
+    }
   };
 
   return (
@@ -53,13 +58,21 @@ const CourseCard = ({ course, index = 0, showEditButton = true }) => {
             <Heart className={`h-4 w-4 ${favorited ? "fill-current" : ""}`} />
           </button>
 
-          {/* Edit Button - Only show if showEditButton is true */}
-          <Link
-            to={`/courses/edit/${course.id}`}
-            className="absolute bottom-2 right-2 p-2 bg-green-500 text-white rounded-full transition-colors duration-200 hover:bg-green-600 shadow-lg"
-          >
-            <Edit className="h-4 w-4" />
-          </Link>
+          <div className="absolute bottom-2 right-2 flex space-x-2">
+            <Link
+              to={`/courses/edit/${course.id}`}
+              className="p-2 bg-green-500 text-white rounded-full transition-colors duration-200 hover:bg-green-600 shadow-lg"
+            >
+              <Edit className="h-4 w-4" />
+            </Link>
+            <button
+              disabled={loadingDeleteLesson}
+              onClick={handleDeleteClick}
+              className="p-2 bg-red-500 text-white rounded-full transition-colors duration-200 hover:bg-red-600 shadow-lg"
+            >
+              <Trash2 className="h-4 w-4" />
+            </button>
+          </div>
         </div>
 
         <div className="p-6">

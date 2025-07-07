@@ -14,12 +14,10 @@ import { Link } from "react-router-dom";
 const Courses = () => {
   const dispatch = useDispatch();
 
-  // Redux state
   const { lessons, loadingGetLessons, lessonsError } = useSelector(
     (state) => state.lessons
   );
   console.log("lessons", lessons);
-  // UI states
   const [filteredLessons, setFilteredLessons] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -27,12 +25,10 @@ const Courses = () => {
   const [selectedClassLevel, setSelectedClassLevel] = useState("All");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  // Fetch lessons from backend
   useEffect(() => {
     dispatch(getLessons());
   }, [dispatch]);
 
-  // Filter lessons whenever dependencies change
   useEffect(() => {
     if (lessons?.length) {
       filterLessons();
@@ -41,8 +37,6 @@ const Courses = () => {
 
   const filterLessons = () => {
     let filtered = [...lessons];
-
-    // Search filter
     if (searchQuery) {
       filtered = filtered.filter(
         (lesson) =>
@@ -53,15 +47,11 @@ const Courses = () => {
           lesson.classLevel.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
-
-    // Class level filter (replacing category filter)
     if (selectedClassLevel !== "All") {
       filtered = filtered.filter(
         (lesson) => lesson.classLevel === selectedClassLevel
       );
     }
-
-    // Price filter
     if (priceRange !== "all") {
       switch (priceRange) {
         case "free":
@@ -88,14 +78,11 @@ const Courses = () => {
   };
 
   const handleSearch = (query) => setSearchQuery(query);
-
-  // Get unique class levels for filtering
   const getUniqueClassLevels = () => {
     if (!lessons || lessons.length === 0) return [];
     return [...new Set(lessons?.map((lesson) => lesson.classLevel))].sort();
   };
 
-  // Transform lesson data to match CourseCard component expectations
   const transformLessonToCourse = (lesson) => ({
     id: lesson._id,
     title: lesson.title,
@@ -108,10 +95,10 @@ const Courses = () => {
             lesson.video
           )}/maxresdefault.jpg`
         : "/api/placeholder/400/300",
-    category: lesson.classLevel, // Using classLevel as category
+    category: lesson.classLevel,
     level: lesson.isPaid ? "Paid" : "Free",
     duration: "Video Lesson",
-    rating: lesson.rating || 4.5, // Default rating if not provided
+    rating: lesson.rating || 4.5,
     students: lesson.enrolledStudents || 0,
     instructor: lesson.instructor || "LearnHub Instructor",
     features: lesson.features || [],
@@ -167,7 +154,6 @@ const Courses = () => {
         />
       </Helmet>
       <Link to="/courses/add">Add Course</Link>
-      {/* Header */}
       <div className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between">
@@ -191,21 +177,18 @@ const Courses = () => {
         </div>
       </div>
 
-      {/* Filter Sidebar */}
       <FilterSidebar
         categories={["All", ...getUniqueClassLevels()]}
         selectedCategory={selectedClassLevel}
         onCategoryChange={setSelectedClassLevel}
         priceRange={priceRange}
         onPriceChange={setPriceRange}
-        rating={0} // Remove rating filter for lessons
-        onRatingChange={() => {}} // No-op for lessons
+        rating={0}
+        onRatingChange={() => {}}
         isOpen={isFilterOpen}
         onClose={() => setIsFilterOpen(false)}
-        showRatingFilter={false} // Hide rating filter for lessons
+        showRatingFilter={false}
       />
-
-      {/* Lessons Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {filteredLessons.length === 0 ? (
           <div className="text-center py-12">

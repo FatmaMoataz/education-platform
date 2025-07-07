@@ -5,12 +5,9 @@ import { useFavorites } from "../context/FavoriteContext";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 
 import {
-  Users,
-  Clock,
   Award,
   Heart,
   Play,
-  Download,
   ChevronDown,
   ChevronUp,
   Calendar,
@@ -118,7 +115,6 @@ const CourseDetails = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen bg-gray-50"
     >
-      {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <Helmet>
           <title>{specificLesson.title} - LearnHub</title>
@@ -186,8 +182,6 @@ const CourseDetails = () => {
           </div>
         </div>
       </div>
-
-      {/* Action Buttons */}
       <div className="bg-white border-b border-gray-200 sticky top-16 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
@@ -229,9 +223,7 @@ const CourseDetails = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-3 gap-12">
-          {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Course Content */}
             <div className="bg-white rounded-lg shadow-md p-6">
               <button
                 onClick={() =>
@@ -278,8 +270,6 @@ const CourseDetails = () => {
                 </div>
               )}
             </div>
-
-            {/* What You'll Learn */}
             <div className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 What You'll Learn
@@ -319,8 +309,6 @@ const CourseDetails = () => {
                 </div>
               </div>
             </div>
-
-            {/* Lesson Details */}
             <div className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Lesson Details
@@ -346,9 +334,7 @@ const CourseDetails = () => {
             </div>
           </div>
 
-          {/* Sidebar */}
           <div className="space-y-8">
-            {/* Course Features */}
             <div className="bg-white rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">
                 This lesson includes:
@@ -372,8 +358,6 @@ const CourseDetails = () => {
                 </div>
               </div>
             </div>
-
-            {/* Share */}
             <div className="bg-white rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">
                 Share this lesson

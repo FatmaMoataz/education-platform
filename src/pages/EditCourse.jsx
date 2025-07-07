@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-  Calendar,
   DollarSign,
   GraduationCap,
   FileText,
@@ -75,23 +74,19 @@ const EditCourse = () => {
           toast("Lesson Updated Successfully");
           navigate("/courses");
         })
-        .catch(() => {
-          // Error handling is done in Redux slice
-        })
+        .catch(() => {})
         .finally(() => {
           setSubmitting(false);
         });
     },
   });
 
-  // Load lesson data when component mounts
   useEffect(() => {
     if (id) {
       dispatch(getLesson({ lessonId: id }));
     }
   }, [dispatch, id]);
 
-  // Update form values when lesson data is loaded
   useEffect(() => {
     if (specificLesson) {
       formik.setValues({
@@ -111,7 +106,6 @@ const EditCourse = () => {
     "Grade 3 Secondary",
   ];
 
-  // Show loading state while fetching lesson data
   if (loadingGetLesson) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
@@ -127,7 +121,6 @@ const EditCourse = () => {
     );
   }
 
-  // Show error if lesson not found or failed to load
   if (!loadingGetLesson && !specificLesson) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
@@ -176,7 +169,6 @@ const EditCourse = () => {
           )}
 
           <form onSubmit={formik.handleSubmit} className="space-y-6">
-            {/* Title Field */}
             <div>
               <label
                 htmlFor="title"
@@ -203,8 +195,6 @@ const EditCourse = () => {
                 </p>
               )}
             </div>
-
-            {/* Description Field */}
             <div>
               <label
                 htmlFor="description"
@@ -231,8 +221,6 @@ const EditCourse = () => {
                 </p>
               )}
             </div>
-
-            {/* Video URL Field */}
             <div>
               <label
                 htmlFor="video"
@@ -259,8 +247,6 @@ const EditCourse = () => {
                 </p>
               )}
             </div>
-
-            {/* Class Level Field */}
             <div>
               <label
                 htmlFor="classLevel"
@@ -292,8 +278,6 @@ const EditCourse = () => {
                 </p>
               )}
             </div>
-
-            {/* Price Field */}
             <div>
               <label
                 htmlFor="price"
@@ -322,8 +306,6 @@ const EditCourse = () => {
                 </p>
               )}
             </div>
-
-            {/* Action Buttons */}
             <div className="pt-6 flex gap-4">
               <button
                 type="button"

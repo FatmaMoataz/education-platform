@@ -23,13 +23,11 @@ const Navbar = () => {
     <nav className="bg-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <BookOpen className="h-8 w-8 text-blue-600" />
             <span className="text-xl font-bold text-gray-900">LearnHub</span>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
@@ -47,8 +45,6 @@ const Navbar = () => {
                 </div>
               </Link>
             ))}
-
-            {/* Auth Buttons */}
 
             {!token ? (
               <div className="flex items-center space-x-4">
@@ -71,8 +67,6 @@ const Navbar = () => {
               </button>
             )}
           </div>
-
-          {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -87,8 +81,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-      {/* Mobile Navigation */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
@@ -114,8 +106,6 @@ const Navbar = () => {
                 </div>
               </Link>
             ))}
-
-            {/* Mobile Auth Buttons */}
             <div className="pt-4 pb-3 border-t border-gray-200 space-y-1">
               {!token ? (
                 <>
